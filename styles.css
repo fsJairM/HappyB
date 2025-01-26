@@ -1,0 +1,125 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f9d8e7, #b2e2f2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+}
+
+/* Estilos para el marco */
+.frame {
+    width: 300px;
+    height: 300px;
+    border: 15px solid #ffcc5c;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 0 auto 20px;
+    background-color: #fff;
+}
+
+/* Estilos para la imagen */
+.photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Estilos para el título */
+.title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ff6f61;
+    text-shadow: 2px 2px 0 #ffcc5c, 4px 4px 0 #ff6f61;
+    margin: 20px 0 10px;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Estilos para el subtítulo */
+.subtitle {
+    font-size: 2rem;
+    color: #6b5b95;
+    text-shadow: 1px 1px 0 #a2d5f2, 2px 2px 0 #6b5b95;
+    margin-top: 10px;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Animación de flotar */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Estilos para el botón */
+.btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: #fff;
+    background-color: #ff6f61;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #ffcc5c;
+}
+
+/* Confeti */
+.confetti {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.confetti::before,
+.confetti::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #ffcc5c;
+    border-radius: 50%;
+    animation: confetti 5s linear infinite;
+}
+
+.confetti::before {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.confetti::after {
+    left: 90%;
+    animation-delay: 2.5s;
+}
+
+@keyframes confetti {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+    }
+}

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Cumpleaños Sara Román <br> ❤</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Playfair Display', serif;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 50px 160px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0));
+            background-repeat: repeat;
+            animation: twinkle 4s ease-in-out infinite;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+        }
+
+        .frame {
+            width: 300px;
+            height: 300px;
+            border: 12px solid transparent;
+            border-image: linear-gradient(45deg, #D4AF37, #FFD700) 1;
+            border-radius: 15px;
+            box-shadow: 
+                0 0 30px rgba(212, 175, 55, 0.3),
+                inset 0 0 20px rgba(212, 175, 55, 0.2);
+            overflow: hidden;
+            margin: 0 auto 20px;
+            background-color: #000;
+            position: relative;
+            transform: perspective(1000px) rotateX(5deg);
+        }
+
+        .photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(1.1) contrast(1.1);
+            transform: scale(1.05);
+            transition: transform 0.5s ease;
+        }
+
+        .photo:hover {
+            transform: scale(1.1);
+        }
+
+        .title {
+            font-size: 4rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #D4AF37, #FFD700);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 
+                0 2px 0 rgba(212, 175, 55, 0.2),
+                0 4px 0 rgba(212, 175, 55, 0.3),
+                0 6px 0 rgba(212, 175, 55, 0.4);
+            margin: 20px 0 10px;
+            animation: float 3s ease-in-out infinite;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .title::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shine 2s linear infinite;
+        }
+
+        .subtitle {
+            font-size: 2.8rem;
+            background: linear-gradient(45deg, #C0C0C0, #FFFFFF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-top: 10px;
+            text-shadow: 
+                0 2px 0 rgba(255, 255, 255, 0.2),
+                0 4px 0 rgba(255, 255, 255, 0.3);
+            animation: floatReverse 3s ease-in-out infinite;
+            letter-spacing: 1px;
+        }
+
+        .btn {
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 1.3rem;
+            color: #000;
+            background: linear-gradient(45deg, #D4AF37, #FFD700);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 0 15px rgba(212, 175, 55, 0.3),
+                0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 
+                0 0 25px rgba(212, 175, 55, 0.5),
+                0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(45deg);
+            animation: buttonShine 3s linear infinite;
+        }
+
+        .balloon {
+            position: absolute;
+            width: 40px;
+            height: 50px;
+            border-radius: 50%;
+            animation: balloonFloat 6s ease-in-out infinite;
+        }
+
+        .balloon.gold { 
+            background: radial-gradient(circle at 30% 30%, #FFD700, #D4AF37);
+            box-shadow: inset -5px -5px 15px rgba(0,0,0,0.3);
+        }
+
+        .balloon.black { 
+            background: radial-gradient(circle at 30% 30%, #444, #111);
+            box-shadow: inset -5px -5px 15px rgba(0,0,0,0.5);
+        }
+
+        .balloon.star {
+            width: 25px;
+            height: 25px;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            background: linear-gradient(45deg, #FFD700, #FFF);
+            animation: starTwinkle 2s ease-in-out infinite;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            animation: confettiFall 5s linear infinite;
+        }
+
+        .confetti.gold { background: #D4AF37; }
+        .confetti.silver { background: #C0C0C0; }
+        .confetti.star {
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            background: #FFD700;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+
+        @keyframes floatReverse {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(-2deg); }
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-150%) skewX(-45deg); }
+            100% { transform: translateX(150%) skewX(-45deg); }
+        }
+
+        @keyframes buttonShine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        @keyframes balloonFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(10px, -15px) rotate(5deg); }
+            50% { transform: translate(0, -30px) rotate(0deg); }
+            75% { transform: translate(-10px, -15px) rotate(-5deg); }
+        }
+
+        @keyframes starTwinkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(-100vh) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 0.4; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="container">
+        <div class="frame">
+            <img src="photo_2025-01-26_16-43-36.jpg" alt="Sara Román" class="photo">
+        </div>
+        <h1 class="title">Feliz Cumpleaños</h1>
+        <h2 class="subtitle">Sara Román</h2>
+        
+        <!-- Balloons -->
+        <div class="balloon gold" style="top: 10%; left: 10%;"></div>
+        <div class="balloon black" style="top: 15%; right: 15%;"></div>
+        <div class="balloon star" style="top: 5%; right: 25%;"></div>
+        <div class="balloon gold" style="top: 20%; left: 20%;"></div>
+        <div class="balloon black" style="top: 8%; right: 30%;"></div>
+        <div class="balloon star" style="top: 25%; left: 35%;"></div>
+        
+        <!-- Confetti -->
+        <div class="confetti gold" style="left: 15%;"></div>
+        <div class="confetti silver" style="left: 25%;"></div>
+        <div class="confetti star" style="left: 35%;"></div>
+        <div class="confetti gold" style="left: 45%;"></div>
+        <div class="confetti silver" style="left: 55%;"></div>
+        <div class="confetti star" style="left: 65%;"></div>
+        <div class="confetti gold" style="left: 75%;"></div>
+        <div class="confetti silver" style="left: 85%;"></div>
+
+        <button class="btn" onclick="playMusic()">🎵 Reproducir Música</button>
+        <audio id="birthdaySong" src="birthday-song.mp3.mp3"></audio>
+    </div>
+    <script>
+        // Función para crear confeti dinámicamente
+        function createConfetti() {
+            const container = document.querySelector('.container');
+            const colors = ['gold', 'silver', 'star'];
+            
+            setInterval(() => {
+                const confetti = document.createElement('div');
+                confetti.className = `confetti ${colors[Math.floor(Math.random() * colors.length)]}`;
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                container.appendChild(confetti);
+                
+                // Eliminar el confeti después de la animación
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }, 200);
+        }
+
+        // Función para reproducir música
+        function playMusic() {
+            const audio = document.getElementById('birthdaySong');
+            if (audio.paused) {
+                audio.play();
+                createConfetti(); // Iniciar confeti cuando comienza la música
+            } else {
+                audio.pause();
+                audio.currentTime = 0;
+            }
+        }
+
+        // Iniciar confeti al cargar la página
+        createConfetti();
+    </script>
+</body>
+</html>
